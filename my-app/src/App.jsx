@@ -1,10 +1,9 @@
-function App() {
+import Topbar from "./components/topbar/Topbar"
 
+function App() {
   return (
     <>
-      <div>
-        Hello I'm Younes
-      </div>
+      <Topbar />
     </>
   )
 }
