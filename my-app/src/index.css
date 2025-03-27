@@ -2,3 +2,7 @@
   margin: 0;
   font-family: "roboto", sans-serif;
 }
+
+.homeContainer{
+  display: flex;
+}
