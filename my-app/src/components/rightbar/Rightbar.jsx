@@ -1,4 +1,6 @@
 import "./rightbar.css"
+import { Users } from "../../dummyData"
+import Online     from '../online/Online'
 
 const Rightbar = () => {
   return (
@@ -18,87 +20,10 @@ const Rightbar = () => {
           className="rightbarAd"
         />
         <h4 className="rightbarTitle">Online friends</h4>
-        <ul className="rightbarFriendList">
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/2.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Fatna Saadaoui</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/3.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Samira Debbagh</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/6.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Hafid Waqar</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/8.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">abdelwahed Chkilit</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/10.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Nossayba Lwaadoudi</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/5.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Soufyan Nemli</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/7.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">abdellah Lkilani</span>
-          </li>
-          <li className="tightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img 
-                src="/assets/person/12.jpg"
-                className="rightbarProfileImg" 
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Lmokhtar Ait Lmahi</span>
-          </li>
+        <ul className="rightbarFriendList" >
+          {Users.map(user =>(
+            <Online user ={user}/>
+          ))}
         </ul>
       </div>
     </div>

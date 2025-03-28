@@ -1,8 +1,9 @@
 .sidebar{
   height    : calc(100vh - 50px);
   width     : 25%;
-  overflow-y: auto;
-  scroll-behavior: smooth;
+  overflow-y: scroll;
+  position  : sticky;
+  top       : 50px;
 }
 
 ::-webkit-scrollbar{
