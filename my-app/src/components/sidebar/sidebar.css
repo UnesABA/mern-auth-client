@@ -46,11 +46,7 @@
   font-weight  : 600;
 }
 
-.sidebarFriend{
-  display      : flex;
-  align-items  : center;
-  margin-bottom: 15px;
-}
+
 
 .sidebarHr{
   margin: 20px 0px;
@@ -62,11 +58,3 @@
   list-style: none;
 }
 
-.sidebarFriendImg{
-  height       : 40px;
-  width        : 40px;
-  border-radius: 50%;
-  object-fit   : cover;
-  margin-right : 10px;
-  cursor       : pointer;
-}

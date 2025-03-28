@@ -1,5 +1,7 @@
 import "./sidebar.css"
 import { RssFeed, Chat, OndemandVideo, Groups, Bookmark, HelpOutline, Work, Event, MenuBook } from "@mui/icons-material"
+import Friend from "../friend/Friend"
+import { Users } from "../../dummyData"
 
 const Sidebar = () => {
   return (
@@ -66,62 +68,9 @@ const Sidebar = () => {
           </button>
           <hr className= "sidebarHr"/>
           <ul className="sidebarFriendList">
-            <li className="sidebarFriend">
-              <img src="/assets/person/1.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Malika chergui</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/2.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Fatna Saadaoui</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/3.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Samira Debbagh</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/4.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Milouda Ait lmoudden</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/5.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Soufyan Nemli</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/6.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Hafid Waqar</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/7.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">abdellah Lkilani</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/8.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">abdelwahed Chkilit</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/9.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Rabab Lfatmi</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/10.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Nossayba Lwaadoudi</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/11.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Ramez Laayan</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/12.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Lmokhtar Ait Lmahi</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/13.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Lhaj AbdelKarim</span>
-            </li>
-            <li className="sidebarFriend">
-              <img src="/assets/person/14.jpg" className="sidebarFriendImg" />
-              <span className="sidebarFriendName">Bilal Faraji</span>
-            </li>
+            {Users.map(user =>(
+              <Friend key= {user.id} user= {user}/>
+            ))}
           </ul>
       </div>
     </div>

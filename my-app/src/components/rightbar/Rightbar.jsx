@@ -22,7 +22,7 @@ const Rightbar = () => {
         <h4 className="rightbarTitle">Online friends</h4>
         <ul className="rightbarFriendList" >
           {Users.map(user =>(
-            <Online user ={user}/>
+            <Online key= {user.id} user ={user}/>
           ))}
         </ul>
       </div>
