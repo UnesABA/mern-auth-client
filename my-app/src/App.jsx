@@ -1,10 +1,10 @@
-import Home from "./components/home/Home"
+import Profile from "./components/pages/profile/Profile"
 import "./index.css"
 
 function App() {
   return (
     <>
-      <Home />
+      <Profile />
     </>
   )
 }
