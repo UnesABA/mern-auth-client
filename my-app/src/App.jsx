@@ -1,10 +1,10 @@
-import Login from "./components/pages/login/Login"
+import Register from "./components/pages/register/Register"
 import "./index.css"
 
 function App() {
   return (
     <>
-      <Login />
+      <Register />
     </>
   )
 }
