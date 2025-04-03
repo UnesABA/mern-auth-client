@@ -1,19 +1,40 @@
-import "./feed.css"
-import Share     from '../share/Share'
-import Post      from "../post/Post"
-import { Posts } from "../../dummyData"
+  import "./feed.css"
+  import Share                   from '../share/Share'
+  import Post                    from "../post/Post"
+  import axios                   from "axios"
+  import { useEffect, useState } from "react"
 
-const Feed = () => {
-  return (
-    <div className= "feed">
-      <div className="feedWrapper">
-        <Share />
-        {Posts.map((post) =>(
-          <Post key= {post.id} post= {post}/>
-        ))}
+  const Feed = ({username}) => {
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+      const fetchPosts = async () => {
+        console.log(username)
+        try {
+          console.log("Fetching posts for:", username || "timeline")
+          const res = username 
+            ? await axios.get("http://localhost:5000/api/posts/profile/" + username) 
+            : await axios.get("http://localhost:5000/api/posts/timeline/67e1d7b56a61477b59750000")
+
+          setPosts(res.data || [])
+        } catch (error) {
+          console.error("Error fetching posts:", error)
+          setPosts([])
+        }
+      }
+      fetchPosts()
+    }, [username])  
+
+    return (
+      <div className= "feed">
+        <div className="feedWrapper">
+          <Share />
+          {posts.map((post) =>(
+            <Post key= {post._id} post= {post}/>
+          ))}
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
 
-export default Feed
+  export default Feed
