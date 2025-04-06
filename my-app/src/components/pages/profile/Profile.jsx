@@ -10,16 +10,15 @@ import "./profile.css"
 const Profile = () => {
   const PF = import.meta.env.VITE_PUBLIC_FOLDER
   const [user, setUser] = useState({})
-  const params = useParams()
-  console.log(params.username)
+  const username = useParams().username
 
   useEffect(() =>{
     const fetchUser = async () =>{
-      const res = await axios.get(`http://localhost:5000/api/users?username=Younes`)
+      const res = await axios.get(`http://localhost:5000/api/users?username=${username}`)
       setUser(res.data)
     }
     fetchUser()
-  }, [])
+  }, [username])
 
   return (
     <>
@@ -38,7 +37,7 @@ const Profile = () => {
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed username= "Younes"/>
+            <Feed username= {username}/>
             <Rightbar user= {user}/>
           </div>
         </div>

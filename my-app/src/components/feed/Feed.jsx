@@ -9,9 +9,7 @@
 
     useEffect(() => {
       const fetchPosts = async () => {
-        console.log(username)
         try {
-          console.log("Fetching posts for:", username || "timeline")
           const res = username 
             ? await axios.get("http://localhost:5000/api/posts/profile/" + username) 
             : await axios.get("http://localhost:5000/api/posts/timeline/67e1d7b56a61477b59750000")
