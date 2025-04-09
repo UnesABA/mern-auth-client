@@ -1,16 +1,21 @@
 import "./post.css"
-import { MoreVert }            from "@mui/icons-material"
-import axios                   from "axios"
-import { useEffect, useState } from "react"
-import { format }              from "timeago.js"
-import { Link }                from "react-router-dom"
-
+import { MoreVert }                        from "@mui/icons-material"
+import axios                               from "axios"
+import { useContext, useEffect, useState } from "react"
+import { format }                          from "timeago.js"
+import { Link }                            from "react-router-dom"
+import { AuthContext }                     from "../../context/AuthContext"
 
 const Post = ({post}) => {
   const [user, setUser]       = useState({})
   const [like, setLike]       = useState(post.likes.length)
   const [isLiked, setIsLiked] = useState(false)
+  const { user: currentUser}  = useContext(AuthContext)
   const PF = import.meta.env.VITE_PUBLIC_FOLDER
+
+  useEffect(() =>{
+    setIsLiked(post.likes.includes(currentUser._id))
+  }, [post.likes, currentUser._id])
 
   useEffect(() =>{
     const fetchUser = async () =>{
@@ -21,6 +26,11 @@ const Post = ({post}) => {
   }, [post.userId])
 
   const likeHandler = () =>{
+    try {
+      axios.put("http://localhost:5000/api/posts/"+post._id + "/like", {userId: currentUser._id})
+    } catch (error) {
+      console.log(error)
+    }
     setLike(isLiked ? like - 1 : like + 1)
     setIsLiked(!isLiked)
     console.log(user)
