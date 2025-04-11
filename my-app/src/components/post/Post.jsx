@@ -27,13 +27,12 @@ const Post = ({post}) => {
 
   const likeHandler = () =>{
     try {
-      axios.put("http://localhost:5000/api/posts/"+post._id + "/like", {userId: currentUser._id})
+      axios.put("http://localhost:5000/api/posts/"+ post._id + "/like", {userId: currentUser._id})
     } catch (error) {
       console.log(error)
     }
     setLike(isLiked ? like - 1 : like + 1)
     setIsLiked(!isLiked)
-    console.log(user)
   }
 
   return (
@@ -43,7 +42,9 @@ const Post = ({post}) => {
           <div className="postTopLeft">
             <Link to= {`/profile/${user.username}`}>
               <img 
-                src= {user.profilePicture ? PF + user.profilePicture : PF + "person/noAvatar.png"} 
+                src      = {user.profilePicture 
+                  ? PF + user.profilePicture 
+                  : PF + "person/noAvatar.png"} 
                 className="postProfileImg" 
               />
             </Link>
@@ -59,7 +60,7 @@ const Post = ({post}) => {
           <span className="postText">
             {post?.description}
           </span>
-          <img src= {PF+post.img} className= "postImg" />
+          <img src= {PF + post.image} className= "postImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

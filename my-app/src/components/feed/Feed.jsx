@@ -16,7 +16,9 @@ import "./feed.css"
             ? await axios.get("http://localhost:5000/api/posts/profile/" + username) 
             : await axios.get("http://localhost:5000/api/posts/timeline/" + user._id)
 
-          setPosts(res.data || [])
+          setPosts(res.data.sort((p1, p2) =>{
+            return new Date(p2.createdAt) - new Date(p1.createdAt)
+          }))
         } catch (error) {
           console.error("Error fetching posts:", error)
           setPosts([])
