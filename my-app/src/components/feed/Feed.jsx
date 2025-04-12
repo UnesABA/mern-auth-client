@@ -30,7 +30,7 @@ import "./feed.css"
     return (
       <div className= "feed">
         <div className="feedWrapper">
-          <Share />
+          {username === user.username && <Share />}
           {posts.map((post) =>(
             <Post key= {post._id} post= {post}/>
           ))}

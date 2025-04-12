@@ -9,7 +9,8 @@ const Share = () => {
   const { user }        = useContext(AuthContext)
   const description     = useRef()
   const PF              = import.meta.env.VITE_PUBLIC_FOLDER
-
+  const formattedDate = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 12)
+ 
   const submitHandler = async (event) =>{
     event.preventDefault()
     const newPost = {
@@ -19,14 +20,14 @@ const Share = () => {
 
     if(file){
       const data     = new FormData()
-      const fileName = Date.now() + file.name
+      const fileName = file.name
       data.append("file", file)
       data.append("name", fileName)
       newPost.image = fileName
 
       try {
         await axios.post("http://localhost:5000/api/upload", data)
-        newPost.image = uploadRes.data.filename
+        //newPost.image = uploadRes.data.filename
       } catch (error) {
         console.log(error)
       }

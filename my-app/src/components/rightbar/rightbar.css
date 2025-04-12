@@ -69,26 +69,23 @@
 }
 
 .rightbarFollowing{
-  display       : flex;
+  display: flex;
   flex-direction: column;
-  align-items   : center;
-  width         : calc(33.33% - 10px);
-  margin-bottom : 10px;
-  cursor        : pointer;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .rightbarFollowingImg{
-  width          : 150px;
-  height         : 120px;
-  border-radius  : 5px;
-  object-fit     : cover;
-  object-position: top
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-/* .rightbarFollowingName {
+.rightbarFollowingName {
   font-size    : 15px;
   width        : 100px;
   text-align   : center;
   overflow-wrap: break-word;
   white-space  : normal;
-} */
+} 

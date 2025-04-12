@@ -60,7 +60,7 @@ const Post = ({post}) => {
           <span className="postText">
             {post?.description}
           </span>
-          <img src= {PF + post.image} className= "postImg" />
+          <img src= {PF +post.image} className= "postImg" /> {/* image */}
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
