@@ -1,9 +1,9 @@
 import "./share.css"
-import { useContext, useRef, useState }          from "react"
-import { AuthContext }                           from "../../context/AuthContext"
-import { PermMedia, Label, Room, EmojiEmotions } from "@mui/icons-material"
-import axios                                     from "axios"
-import { Link }                                  from 'react-router-dom'
+import { useContext, useRef, useState }                  from "react"
+import { AuthContext }                                   from "../../context/AuthContext"
+import { PermMedia, Label, Room, EmojiEmotions, Cancel } from "@mui/icons-material"
+import axios                                             from "axios"
+import { Link }                                          from 'react-router-dom'
 
 const Share = () => {
   const [file, setFile] = useState(null)
@@ -57,6 +57,12 @@ const Share = () => {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img src= {URL.createObjectURL(file)} className="shareImg" />
+            <Cancel className= "shareImgIcon" onClick= {() => setFile(null)}/>
+          </div>
+        )}
         
         <form className="shareBottom" onSubmit= {submitHandler}>
           <div className="shareOptions">
