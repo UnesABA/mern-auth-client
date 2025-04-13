@@ -3,13 +3,13 @@ import { useContext, useRef, useState }          from "react"
 import { AuthContext }                           from "../../context/AuthContext"
 import { PermMedia, Label, Room, EmojiEmotions } from "@mui/icons-material"
 import axios                                     from "axios"
+import { Link }                                  from 'react-router-dom'
 
 const Share = () => {
   const [file, setFile] = useState(null)
   const { user }        = useContext(AuthContext)
   const description     = useRef()
   const PF              = import.meta.env.VITE_PUBLIC_FOLDER
-  const formattedDate = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 12)
  
   const submitHandler = async (event) =>{
     event.preventDefault()
@@ -27,7 +27,6 @@ const Share = () => {
 
       try {
         await axios.post("http://localhost:5000/api/upload", data)
-        //newPost.image = uploadRes.data.filename
       } catch (error) {
         console.log(error)
       }
@@ -45,10 +44,12 @@ const Share = () => {
     <div className= "share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img 
-            src       = {user.profilePicture ? PF + user.profilePicture : PF + "assets/person.noAvatar.png"} 
-            className = "shareProfileImg" 
-          />
+          <Link to= {"/profile/" + user.username}>
+            <img 
+              src       = {user.profilePicture ? PF + user.profilePicture : PF + "assets/person.noAvatar.png"} 
+              className = "shareProfileImg" 
+            />
+          </Link>
           <input 
             placeholder= {`what's in your mind ${user.username} ?`} 
             className  = "shareInput" 

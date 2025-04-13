@@ -65,20 +65,20 @@
   display        : flex;
   flex-wrap      : wrap;
   justify-content: space-between;
-  gap: 10px;
+  gap            : 10px;
 }
 
 .rightbarFollowing{
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  cursor: pointer;
+  margin-bottom : 20px;
+  cursor        : pointer;
 }
 
 .rightbarFollowingImg{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  width        : 100px;
+  height       : 100px;
+  object-fit   : cover;
   border-radius: 5px;
 }
 
@@ -89,3 +89,18 @@
   overflow-wrap: break-word;
   white-space  : normal;
 } 
+
+.rightbarFollowButton{
+  background-color: #1872f2;
+  display         : flex;
+  align-items     : center;
+  margin-top      : 30px;
+  margin-bottom   : 10px;
+  border          : none;
+  color           : white;
+  border-radius   : 5px;
+  padding         : 5px 10px;
+  font-size       : 16px;
+  font-weight     : 500;
+  cursor          : pointer;
+}

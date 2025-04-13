@@ -1,19 +1,25 @@
 import "./rightbar.css"
-import { Users }               from "../../dummyData"
-import Online                  from '../online/Online'
-import { useEffect, useState } from "react"
-import axios                   from "axios"
-import { Link }                from 'react-router-dom'                   
+import { Users }                           from "../../dummyData"
+import Online                              from '../online/Online'
+import { useContext, useEffect, useState } from "react"
+import axios                               from "axios"
+import { Link }                            from 'react-router-dom'   
+import {AuthContext}                       from "../../context/AuthContext"  
+import AddIcon                             from '@mui/icons-material/Add'              
+import RemoveIcon                          from '@mui/icons-material/Remove'
 
 const Rightbar = ({ user }) => {
-  const PF = import.meta.env.VITE_PUBLIC_FOLDER
-  const [friends, setFriends] = useState([])
+  const PF                            = import.meta.env.VITE_PUBLIC_FOLDER
+  const {user: currentUser, dispatch} = useContext(AuthContext)
+  const [friends, setFriends]         = useState([])
+  const [followed, setFollowed]       = useState(currentUser.followings.includes(user?.id))
 
   useEffect(() =>{
     const getFriends = async () =>{
       if(user._id){
         try {
           const friendList = await axios.get("http://localhost:5000/api/users/friends/" + user._id)
+          console.log(friendList.data)
           setFriends(friendList.data)
         } catch (error) {
           console.log(error)
@@ -22,7 +28,29 @@ const Rightbar = ({ user }) => {
     }
 
     getFriends()
-  }, [user._id])
+  }, [user])
+
+  const handleClick = async () =>{
+    try {
+      if(followed){
+        await axios.put("/users/"+user._id+"unfollow", {userId: currentUser._id})
+        dispatch({
+          type   : "UNFOLLOW", 
+          payload: user._id
+        })
+      }else{
+        await axios.put("/users/"+user._id+"follow", {userId: currentUser._id})
+        dispatch({
+          type   : "FOLLOW", 
+          payload: user._id
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+    setFollowed(!followed)
+  }
 
   const HomeRightbar = ()=>{
     return(
@@ -53,6 +81,12 @@ const Rightbar = ({ user }) => {
   const ProfileRightbar = ()=>{
     return (
       <>
+        {user.username !== currentUser.username && 
+          <button className= "rightbarFollowButton" onClick= {handleClick}>
+            {followed ? "unfollowed" : "Follow"}
+            {followed ? <RemoveIcon /> : <AddIcon />}
+          </button>
+        }
         <h4 className="rightbarTitle">User Informations</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
@@ -61,7 +95,7 @@ const Rightbar = ({ user }) => {
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From :</span>
-            <span className="rightbarInfoValue">{user.form}</span>
+            <span className="rightbarInfoValue">{user.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship :</span>

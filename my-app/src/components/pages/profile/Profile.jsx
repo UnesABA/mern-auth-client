@@ -28,8 +28,8 @@ const Profile = () => {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <img src= {user.coverPicture || `${PF}post/4.jpg`} className= "profileCoverImg" />
-              <img src= {user.profilePicture || `${PF}person/noAvatar.png`} className= "profileUserImg" />
+              <img src= {user.coverPicture ? PF + user.coverPicture : `${PF}post/4.jpg`} className= "profileCoverImg" />
+              <img src= {user.profilePicture ? PF + user.profilePicture : `${PF}person/noAvatar.png`} className= "profileUserImg" />
             </div>
             <div className="profileInfo">
               <h4 className="profileInfoName">{user.username}</h4>
